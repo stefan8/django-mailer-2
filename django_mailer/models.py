@@ -1,14 +1,10 @@
 from django.db import models
 from django_mailer import constants, managers
-
-
-def default_now():
-    from django import VERSION
-    if (VERSION[0] >= 1 and VERSION[1] >= 4):
-        from django.utils import timezone
-        return timezone.now()
-    import datetime
-    return datetime.datetime.now()
+try:
+    from django.utils.timezone import now as default_now
+except ImportError:
+    # Django < 1.4 comes without timezone support
+    from datetime.datetime import now as default_now
 
 
 PRIORITIES = (
