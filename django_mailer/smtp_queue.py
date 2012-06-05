@@ -4,10 +4,10 @@ from django.core.mail.backends.base import BaseEmailBackend
 
 
 class EmailBackend(BaseEmailBackend):
-    '''
+    """
     A wrapper that manages a queued SMTP system.
 
-    '''
+    """
 
     def send_messages(self, email_messages):
         """
